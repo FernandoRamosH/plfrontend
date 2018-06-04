@@ -1,6 +1,14 @@
 <template>
     <div>
-         <h1><img class="card-img-top shieldIcon" :src="team.shieldUrl"> {{ team.name}}</h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item" aria-current="page">
+                    <router-link :to="{name: 'teamslist'}">Equipos</router-link>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">{{ team.name}}</li>
+            </ol>
+        </nav>
+         <h1><img class="card-img-top shieldIcon" :src="team.shieldUrl">{{ team.name}}</h1>
          <div class="text-right">
             <router-link :to="{name: 'playernew', params: { teamId:  team.id }}" class="btn btn-primary">Crear un jugador</router-link>
          </div>
@@ -10,7 +18,7 @@
                     <th class="sortableLink" @click="sort('number')">Número</th>
                     <th class="sortableLink" @click="sort('fullName')">Nombre</th>
                     <th class="sortableLink" @click="sort('position')">Posición</th>
-                    <th class="sortableLink" @click="sort('birthDate')">Fecha de nacimiento</th>
+                    <th class="sortableLink" @click="sort('dateOfBirth')">Fecha de nacimiento</th>
                     <th class="sortableLink" @click="sort('nationality')">Nacionalidad</th>
                 </tr>
             </thead>
@@ -19,7 +27,7 @@
                     <td>{{ player.number }}</td>
                     <td>{{ player.fullName }}</td>
                     <td>{{ player.position }}</td>
-                    <td>{{ player.birthDate }}</td>
+                    <td>{{ player.dateOfBirth }}</td>
                     <td>{{ player.nationality }}</td>
                 </tr>
             </tbody>

@@ -1,16 +1,19 @@
 <template>
     <div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">Equipos</li>
+            </ol>
+        </nav>
         <h1>Equipos</h1>
         <div class="form-group">
             <input type="text" name="search" v-model="teamSearch" placeholder="Buscar un equipo..." class="form-control" v-on:keyup="searchTeams">
         </div>
         <div class="row">
             <div class="col-md-3"  v-for="team in teams">
-                <div class="card mb-3 box-shadow text-center" style="border: 0 !important">
+                <div class="card mb-3 box-shadow text-center border0">
                     <router-link :to="{name: 'teamdetails', params: { id: team.id }}">
-                        <div class="div-wrapper">
-                            <img class="card-img-top shieldImg" :src="team.shieldUrl">
-                        </div>
+                        <img class="card-img-top shieldImg" :src="team.shieldUrl">
                         <div class="card-body">
                             <h4 class="card-text">
                                 {{ team.name }}
@@ -43,7 +46,9 @@
             getTeams: function()
             {
                 this.$http.get('http://plbackend.fernandoramos.eu/api/v1/teams').then((response) => {
-                    this.teams = response.body;
+                    this.teams = response.body.sort((a,b) => {
+                        return (a.name >= b.name) ? 1 : -1;
+                    });
                     this.originalTeams = this.teams;
                 }, (response) => {
 
