@@ -1,0 +1,23 @@
+.shieldImg{
+	height: auto;
+	width: 90px;
+}
+.shieldImgDiv{
+	height: 130px;
+	width: 90px;
+	text-align: center;
+}
+.team {
+	text-align: center;
+}
+.sortableLink{
+	cursor: pointer;
+	color: blue;
+}
+.mt20{
+	margin-top: 20px;
+}
+.shieldIcon{
+	width:48px !important;
+	height:90px !important	;
+}
